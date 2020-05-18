@@ -36,4 +36,8 @@
   <ItemGroup>
     <Text Include="filme.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="example.csv" />
+    <None Include="webex.html" />
+  </ItemGroup>
 </Project>

@@ -52,7 +52,40 @@ int main()
 				Sleep(3000);
 				system("CLS");
 			} while (m != 0);
-			if (n == 0)
+		if (n == 2)
+		{int obtiune;
+			cout << "Tasta 1 fisier csv" << endl;
+		cout << "Tasta 2 html" << endl;
+		cin >> obtiune;
+				do
+				{
+					system("CLS");
+					cout << "1.Cautati dupa gen " << endl;
+					cout << "2. Stergreti din lista de vizionare" << endl;
+					cout << "3. Afisare Lista de vizionare" << endl;
+					cout << "0. Apasand tasta 0, va reintoarceti la pagina principala!" << endl;
+					cout << "Alegeti ce doriti sa faceti apasand tasta de tip numar,din stanga celor de mai sus: ";
+					cin >> m;
+					//optiune adaugare
+					if (m == 1)
+						f.Cautare(obtiune);
+					else
+						if (m == 2)
+							f.stergere(obtiune);
+						else
+							if (m == 3)
+								f.Afisare(obtiune);
+						else
+							if (m == 0)
+								{
+									cout << "Ati iesit din modul Utilizator";
+									break;
+								}
+					Sleep(3000);
+					system("CLS");
+				} while (m != 0);
+		}
+		if (n == 0)
 				break;
 			Sleep(3000);
 			system("CLS");
