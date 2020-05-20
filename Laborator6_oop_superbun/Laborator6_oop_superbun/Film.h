@@ -21,6 +21,7 @@ public:
 	Film();
 	void insert_film();
 	void stergere_film();
+	void afisare_filme();
 	void modificare_film();
 	void Cautare(int obtiune);
 	//void openTrailer(string trailer);

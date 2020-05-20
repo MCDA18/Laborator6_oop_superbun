@@ -16,7 +16,13 @@ int main()
 		cout << "2.Mod utilizator" << endl;
 		cout << "0. Apasand tasta 0 iesiti din program!!!" << endl;
 		cout << "Alegeti ce doriti sa faceti apasand tasta de tip numar,din stanga celor de mai sus: ";
-		cin >> n;
+		while (!(cin >> n))
+		{
+			cout << "Eroare:Reintroduceti optiunea! ";
+			cin.clear();
+			cin.ignore(123, '\n');
+
+		}
 		if (n == 1)
 			do
 			{
@@ -28,7 +34,13 @@ int main()
 				cout << "4. Afisati lista de filme" << endl;
 				cout << "0. Apasand tasta 0, va reintoarceti la pagina principala!" << endl;
 				cout << "Alegeti ce doriti sa faceti apasand tasta de tip numar,din stanga celor de mai sus: ";
-				cin >> m;
+				while (!(cin >> m))
+				{
+					cout << "Eroare:Reintroduceti optiunea! ";
+					cin.clear();
+					cin.ignore(123, '\n');
+
+				}
 				//optiune adaugare
 				if (m == 1)
 					f.insert_film();
@@ -40,10 +52,10 @@ int main()
 						//optiune modificare
 						if (m == 3)
 							f.modificare_film();
-				/*else
+				else
 					if (m == 4)
-					//	f.afisare_filme();
-					else*/
+						f.afisare_filme();
+					else
 				if (m == 0)
 				{
 					cout << "Ati iesit din modul administrator";

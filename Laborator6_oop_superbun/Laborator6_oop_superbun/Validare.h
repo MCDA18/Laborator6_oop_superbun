@@ -5,5 +5,6 @@ class Validare
 {
 public:
 	int validare_film(string);
+	bool check_number(int);
 };
 

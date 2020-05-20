@@ -1,7 +1,10 @@
 #include "Film.h"
 #include <iostream>
 #include <fstream>
-
+#include <cstdlib> 
+#include <exception>
+#include <assert.h>
+#define assert(exp) ((void) 0)
 using namespace std;
 //constructoru default
 Film::Film()
@@ -17,6 +20,7 @@ Film::Film()
 void Film::insert_film()
 {
 	Validare v;
+	Validare v1;
 	string titel, genre, trailer;
 	int erscheinungsjahr, anzahl_likes;
 	Film f;
@@ -28,24 +32,23 @@ void Film::insert_film()
 		cout << "Ce gen este filmul?";
 		cin >> genre;
 		cout << "In ce an a aparut filmul?";
-		try {
-			cin >> erscheinungsjahr;
+		while (!(cin >> erscheinungsjahr))
+		{
+			cout << "Eroare:Reintroduceti data! ";
+			cin.clear();
+			cin.ignore(123, '\n');
 
 		}
-		catch (exception)
-		{
-			cout << "Date introduse gresit!";
-		}
 		cout << "Care este numarul de like-uri?";
-		cin >> anzahl_likes;
+		while (!(cin >> anzahl_likes))
+		{
+			cout << "Eroare:Reintroduceti numarul de like-uri! ";
+			cin.clear();
+			cin.ignore(123, '\n');
+
+		}
 		cout << "Care este linkul trailerului?";
 		cin >> trailer;
-		//atributele obiectului primesc datele oferite de administrator
-		/*f.titel = titel;
-		f.genre = genre;
-		f.erscheinungsjahr = erscheinungsjahr;
-		f.anzahl_likes = anzahl_likes;
-		f.trailer = trailer;*/
 		ofstream out("filme.txt", ios::app);
 		out << titel << ' ' << genre << ' ' << erscheinungsjahr << ' ' << anzahl_likes << ' ' << trailer << endl;
 		cout << "Filmul a fost adaugat cu succes";
@@ -53,6 +56,14 @@ void Film::insert_film()
 	}
 	else
 		cout << "Numele exista deja";
+}
+void Film::afisare_filme()
+{
+	string titel, genre, trailer;
+	int erscheinungsjahr, anzahl_likes;
+	ifstream in("filme.txt", ios::in);
+	while (in >> titel >> genre >> erscheinungsjahr >> anzahl_likes >> trailer)
+		cout << titel << " " << genre << " " << erscheinungsjahr << " " << anzahl_likes << " " << trailer<<endl;
 }
 //stergerea unui film
 void Film::stergere_film()
@@ -155,14 +166,26 @@ void Film::modificare_film()
 		if (m == 3)
 		{
 			cout << "An nou:";
-			cin >> erscheinungsjahr;
+			while (!(cin >> erscheinungsjahr))
+			{
+				cout << "Eroare:Reintroduceti data! ";
+				cin.clear();
+				cin.ignore(123, '\n');
+
+			}
 			out1 << t << " " << gen << " " << erscheinungsjahr << " " << nr_like << " " << tr;
 			cout << "Anul a fost schimbat!";
 		}
 		if (m == 4)
 		{
 			cout << "Numar de like-uri nou:";
-			cin >> anzahl_likes;
+			while (!(cin >> anzahl_likes))
+			{
+				cout << "Eroare:Reintroduceti data! ";
+				cin.clear();
+				cin.ignore(123, '\n');
+
+			}
 			out1 << t << " " << gen << " " << an << " " << anzahl_likes << " " << tr;
 			cout << "Numarul de like-uri a fost schimbat";
 		}

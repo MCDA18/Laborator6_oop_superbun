@@ -13,3 +13,10 @@ int Validare::validare_film(string nume)
 			return 0;
 	return 1;
 }
+bool Validare::check_number(int strin) {
+	string str = to_string(strin);
+	for (int i = 0; i < str.length(); i++)
+		if (isdigit(str[i])==false)
+			return false;
+	return true;
+}
